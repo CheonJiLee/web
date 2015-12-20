@@ -67,13 +67,18 @@
                     $row = $result->fetch_assoc();
                     // output data of each row
             ?>
+            <tr>
+                <td>
+                    id : <input id="id" name="id" type="text" value="<?php echo $row["id"];?>" disabled>
+                </td>
+            </tr>
 			<tr>
                 <td>
-                    제목 : <input id="title" type="text" value="<?php echo $row["title"];?>">
+                    제목 : <input id="title" name="title" type="text" value="<?php echo $row["title"];?>">
                 </td>
             </tr>
             <tr>
-                <td>작성자 : <input id="title" type="text" value="<?php echo $row["writer"];?>">
+                <td>작성자 : <input id="writer" name="writer" type="text" value="<?php echo $row["writer"];?>">
                 </td>
             </tr>
             <tr>
@@ -87,6 +92,7 @@
         }
         $conn->close();
         ?>
+        <input id="submit" type="submit" value="수정하기">
         </form>
 	</div>
 

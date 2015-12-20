@@ -41,14 +41,14 @@
         <hr>
 		<br>
 		<br>
+        <form>
 		<table>
             <?php
                 $servername = "localhost";
                 $username = "changoul";
                 $password = "changoul";
                 $dbname = "Changoul";
-                $where = "당일 주문 당일 발송 안내 ";
-                //$where = $_POST["title"];
+                $where = $_POST["title"];
 
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -69,6 +69,8 @@
                     $row = $result->fetch_assoc();
                     if($row["isnotice"] == '1')
                         echo "[공지] ";
+                ?>
+                <?php
                     echo $row["title"];
                 ?>
                 </td>
@@ -83,6 +85,7 @@
         }
         $conn->close();
         ?>
+        </form>
 	</div>
 
 </body>

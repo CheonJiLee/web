@@ -63,19 +63,19 @@
 			------------------------------------------------<br>
 			조건 검색란 만들기<br>
 			상태:
-			<input type="radio" name="chk_info1" value="냉장">냉장
-			<input type="radio" name="chk_info1" value="냉동">냉동<br>
+			<input type="radio" name="chk_info1" value="냉장" ondblclick="this.checked=false">냉장
+			<input type="radio" name="chk_info1" value="냉동" ondblclick="this.checked=false">냉동<br>
 			용도:
-			<input type="radio" name="chk_info2" value="국거리">국거리
-			<input type="radio" name="chk_info2" value="구이">구이
-			<input type="radio" name="chk_info2" value="조림">조림
-			<input type="radio" name="chk_info2" value="훈제">훈제<br>
+			<input type="radio" name="chk_info2" value="국거리" ondblclick="this.checked=false">국거리
+			<input type="radio" name="chk_info2" value="구이" ondblclick="this.checked=false">구이
+			<input type="radio" name="chk_info2" value="조림" ondblclick="this.checked=false">조림
+			<input type="radio" name="chk_info2" value="훈제" ondblclick="this.checked=false">훈제<br>
 			등급:
-			<input type="radio" name="chk_info3" value="A++">A++
-			<input type="radio" name="chk_info3" value="A+">A+
-			<input type="radio" name="chk_info3" value="A">A
-			<input type="radio" name="chk_info3" value="B+">B+
-			<input type="radio" name="chk_info3" value="etc">그 외<br>
+			<input type="radio" name="chk_info3" value="A++" ondblclick="this.checked=false">A++
+			<input type="radio" name="chk_info3" value="A+" ondblclick="this.checked=false">A+
+			<input type="radio" name="chk_info3" value="A" ondblclick="this.checked=false">A
+			<input type="radio" name="chk_info3" value="B+" ondblclick="this.checked=false">B+
+			<input type="radio" name="chk_info3" value="etc" ondblclick="this.checked=false">그 외<br>
 			------------------------------------------------
 			SortBy<select name="sel_pro" >
 			<option value="낮은가격순">낮은가격순</option>
@@ -108,33 +108,34 @@
 
                 if ($result->num_rows > 0) {
                     // output data of each row
-            
-                    while($row = $result->fetch_assoc()) {
+                    
+                    $row = $result->fetch_assoc();
+                    while($row) {
                     ?>
                     <tr>
-                <td>
+                    <?php
+                        for($i = 0; $i < 4 && $row; $i++) {
+                    ?>
+                        <td>
                     
-                        <img src="<?php echo $row["picture"]?>" width="200" height="200" alt="gogi">
+                                <img src="<?php echo $row["picture"]?>" width="200" height="200" alt="gogi"><br>
+                    
+                        <?php
+                                echo $row["name"]. "<br>" . $row["price"]. "원<br>" . $row["purpose"]. "</td>";
+                                ?>
                     
                     
-                </td>
-                <?php
-                        echo "<td>" . $row["name"]. "</td><td>" . $row["price"]. "</td><td>" . $row["purpose"]. "</td>";
-                    }
-                }
+                        </td> 
+                        <?php
+                            $row = $result->fetch_assoc();
+                        }
                         ?>
-                        
-            </tr> 
-     
-				    
-               
-                
-                    
-                
-                
+                    </tr>
+                    <?php
+                        }
+                    }
+                    ?>   
 			</table>
-
-
 		</div>
 
 	</div>

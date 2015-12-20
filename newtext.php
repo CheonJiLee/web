@@ -47,11 +47,11 @@
 		<table>
 			<tr>
                 <td>
-                    제목 : <input id="title" type="text" value="">
+                    제목 : <input id="title" name="title" type="text" value="<?php echo $row["title"];?>">
                 </td>
             </tr>
             <tr>
-                <td>작성자 : <input id="title" type="text" value="">
+                <td>작성자 : <input id="writer" name="writer" type="text" value="<?php echo $row["writer"];?>">
                 </td>
             </tr>
             <tr>
@@ -61,6 +61,7 @@
             </tr>
 		</table>
         <textarea id="content" name="content" rows="10" cols="45"></textarea>
+        <input id="submit" type="submit" value="글작성하기">
         </form> 
 	</div>
 
