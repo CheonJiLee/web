@@ -1,33 +1,3 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "localhost";
-    $username = "changoul";
-    $password = "changoul";
-    $dbname = "Changoul";
-    $where = $_POST["title"];
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
-
-    $sql = "SELECT id, isnotice, title, date, writer, content FROM notice WHERE title='".$where."'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-        }
-    } else {
-        echo "0 results";
-    }
-    $conn->close();
-}
-?>
-
 <!doctype html>
 <html>
 <head>
@@ -73,40 +43,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<br>
 		<table>
             <?php
+                $servername = "localhost";
+                $username = "changoul";
+                $password = "changoul";
+                $dbname = "Changoul";
+                $where = "당일 주문 당일 발송 안내 ";
+                //$where = $_POST["title"];
+
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);
                 // Check connection
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 } 
-
-                $sql = "SELECT id, isnotice, title, date, writer FROM notice";
+                
+                $sql = "SELECT id, isnotice, title, date, writer, content FROM notice WHERE title='".$where."'";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     // output data of each row
             ?>
 			<tr>
-                <td>No</td>
-                <td>제목</td>
-                <td>작성자</td>
-                <td>등록일</td>
-            </tr>
-            <?php
-                    while($row = $result->fetch_assoc()) {
-                        ?>
-            <tr>
+                <td>
                 <?php
-                        echo "<td>" . $row["id"]. "</td><td>" . $row["title"]. "</td><td>" . $row["writer"]. "</td><td>" . $row["date"]. "</td>";
-                        ?>
+                    $row = $result->fetch_assoc();
+                    if($row["isnotice"] == '1')
+                        echo "[공지] ";
+                    echo $row["title"];
+                ?>
+                </td>
+                <td>작성자 : <?php echo $row["writer"];?></td>
+                <td>등록일 : <?php echo $row["date"];?></td>
             </tr>
-                <?php
-                    }
-                }
-                $conn->close();
-            ?>
 		</table>
-        <button>글작성</button>
+        <?php
+                echo $row["content"];
+                ?>
+        <?php
+        }
+        $conn->close();
+        ?>
 	</div>
 
 </body>
