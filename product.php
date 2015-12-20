@@ -18,7 +18,7 @@
 <body>
 
 <header>
-	<img src="img/title.png" width="500" height="300">빈 이미지와, 회사 마크와 간략한 문>
+	<img src="img/title.png" width="500" height="300" alt="main">빈 이미지와, 회사 마크와 간략한 문>
 	<div id='cssmenu'>
 		<ul>
 			<li class='active'><a href='index.html'>Home</a></li>
@@ -77,7 +77,7 @@
 			<input type="radio" name="chk_info3" value="B+">B+
 			<input type="radio" name="chk_info3" value="etc">그 외<br>
 			------------------------------------------------
-			<p><p>SortBy<select name="sel_pro" >
+			SortBy<select name="sel_pro" >
 			<option value="낮은가격순">낮은가격순</option>
 			<option value="높은가격순">높은가격순</option>
 			<option value="제조일">제조일</option>
@@ -85,107 +85,53 @@
 		</select>
 			<br>
 			<br>
+
+ 
+
 			<table>
-				<tr>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<center>고기에 대한 설명<br>
-						<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-						<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-						<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-						<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-				</tr>
+
+                <?php
+                $servername = "localhost";
+                $username = "changoul";
+                $password = "changoul";
+                $dbname = "Changoul";
+                
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                } 
+                
+                $sql = "SELECT title_no, name, price, picture, purpose FROM meat";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    // output data of each row
+            
+                    while($row = $result->fetch_assoc()) {
+                    ?>
+                    <tr>
+                <td>
+                    
+                        <img src="<?php echo $row["picture"]?>" width="200" height="200" alt="gogi">
+                    
+                    
+                </td>
+                <?php
+                        echo "<td>" . $row["name"]. "</td><td>" . $row["price"]. "</td><td>" . $row["purpose"]. "</td>";
+                    }
+                }
+                        ?>
+                        
+            </tr> 
+     
+				    
+               
+                
+                    
+                
+                
 			</table>
 
 
