@@ -1,5 +1,4 @@
 Event.observe(window, "load", function () {
-    $("form").observe("change", passwordchange);
     $("form").observe("submit", submit);
 });
 
@@ -13,4 +12,6 @@ function passwordchange() {
 
 function submit() {
     $("id").disabled = false;
+    $("title").disabled = false;
+    alert("go");
 }

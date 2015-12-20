@@ -24,7 +24,7 @@
 			<li class='active'><a href='index.html'>Home</a></li>
 			<li><a href='#'>회사소개</a></li>
 			<li><a href='product.html'>한우</a></li>
-			<li><a href='#'>공지사항/FAQ</a></li>
+			<li><a href='notice.php'>공지사항/FAQ</a></li>
 			<li><a href='#'>장바구니</a></li>
 		</ul>
 	</div>

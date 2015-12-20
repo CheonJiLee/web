@@ -12,36 +12,36 @@
 	<link rel="stylesheet" href="sidebar.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 	<script src="script.js"></script>
-
+<!--textedit control-->
+    <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<script src="textedit.js"></script>
 </head>
-
-<body>
+    
+<body bgcolor="#FFFAF6">
 <header>
-	<img src="img/title.png" width="500" height="300" alt="shop mark">빈 이미지와, 회사 마크와 간략한 문>
-	<div id='cssmenu'>
-		<ul>
-			<li class='active'><a href='index.html'>Home</a></li>
-			<li><a href='#'>회사소개</a></li>
-			<li><a href='product.html'>한우</a></li>
-			<li><a href='notice.php'>공지사항/FAQ</a></li>
-			<li><a href='#'>장바구니</a></li>
-		</ul>
-	</div>
+    <div style="margin-left: 10%">
+         <table>
+             <tr> <td rowspan="3"> <img src="img/logo_top.png" width="500" height="300" alt="logo top"></td><td><td></td></td><td></td></tr>
+            <tr><td rowspan="3"><img src="img/pink.png" width="100" height="300" alt="pink"></td><td></td><td></td><td><img src="img/pink.png" width="100" height="150" alt="pink"></td></tr>
+            <tr><td></td><td></td><td><img src="img/call.png" width="400" height="100" alt="call"></td></td></td></tr>
+         </table>
+    </div>
+    <div id='cssmenu' style="">
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='intro.html'>회사소개</a></li>
+            <li><a href='product.html'>한우</a></li>
+            <li class='active'><a href='notice.php'>공지사항/FAQ</a></li>
+            <li><a href='#'>장바구니</a></li>
+        </ul>
+    </div>
 </header>
 <br>
 <br>
 <br>
 <br>
 	<div id='content'>
-		<br>
-		<br>
-		<br>
-		<h1><u>공지사항 & Questions</u></h1>
-		<br>
-        <hr>
-		<br>
-		<br>
-        <form>
+        <form id="form" action="textedit.php" method="post">
 		<table>
             <?php
                 $servername = "localhost";
@@ -70,21 +70,22 @@
                     if($row["isnotice"] == '1')
                         echo "[공지] ";
                 ?>
-                <?php
-                    echo $row["title"];
-                ?>
-                </td>
-                <td>작성자 : <?php echo $row["writer"];?></td>
-                <td>등록일 : <?php echo $row["date"];?></td>
-            </tr>
+                    <input id="title" name="title" type="text" value="<?php echo $row["title"];?>" style="border: none; color: black; background-color: transparent;" disabled>
+                </td><td></td>
+                <tr><td></td><td>작성자 : <?php echo $row["writer"];?></td></tr>
+                <tr><td></td><td>등록일 : <?php echo $row["date"];?></td></tr>
 		</table>
         <?php
-                echo $row["content"];
-                ?>
+            $myfile = fopen($row["content"], "r") or die("Unable to open file!");
+            echo fread($myfile,filesize($row["content"]));
+            fclose($myfile);
+        ?>
         <?php
         }
         $conn->close();
         ?>
+        <br>
+        <input id="submit" type="submit" value="수정하기">
         </form>
 	</div>
 

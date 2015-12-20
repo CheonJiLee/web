@@ -1,3 +1,21 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatiblee" content="IE=edge,chrome=1" />
+<!------상단메뉴용---------------------------->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="top_menu.js"></script>
+<!------이미지슬라이드---------------------------->
+	<link rel="stylesheet" href="sidebar.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="script.js"></script>
+    
+    <link rel="stylesheet" href="table.css">
+</head>
+
 <?php
 $servername = "localhost";
 $username = "changoul";
@@ -23,8 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else{
             $isprivate = 0;
         }
+        
+        $content = "text\\".$_POST["id"].".txt";
+        $myfile = fopen($content, "w") or die("Unable to open file!");
+        $txt = $_POST["content"];
+        fwrite($myfile, $txt);
+        fclose($myfile);
+        $content = "text\\\\".$_POST["id"].".txt";
+
         // output data of each row
-        $sql = "UPDATE notice SET title='".$_POST["title"]."', writer='".$_POST["writer"]."', content='".$_POST["content"]."', password='".$_POST["password"]."', isprivate=".$isprivate."  WHERE id=".$_POST["id"];
+        $sql = "UPDATE notice SET title='".$_POST["title"]."', writer='".$_POST["writer"]."', content='".$content."', password='".$_POST["password"]."', isprivate=".$isprivate."  WHERE id=".$_POST["id"];
 
         if ($conn->query($sql) === TRUE) {
         } else {
@@ -45,8 +71,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else{
             $isprivate = 0;
         }
+        
+        $content = "text\\".$id.".txt";
+        $myfile = fopen($content, "w") or die("Unable to open file!");
+        $txt = $_POST["content"];
+        fwrite($myfile, $txt);
+        fclose($myfile);
+        $content = "text\\\\".$id.".txt";
           
-        $sql = "INSERT INTO notice (id, title, date, writer, content, password, isprivate) VALUES (".$id.", '".$_POST["title"]."', '".date("Y-m-d")."', '".$_POST["writer"]."', '".$_POST["content"]."', '".$_POST["password"]."', ".$isprivate.")";
+        $sql = "INSERT INTO notice (id, title, date, writer, content, password, isprivate) VALUES (".$id.", '".$_POST["title"]."', '".date("Y-m-d")."', '".$_POST["writer"]."', '".$content."', '".$_POST["password"]."', ".$isprivate.")";
 
         if ($conn->query($sql) === TRUE) {
         } else {
@@ -57,50 +90,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatiblee" content="IE=edge,chrome=1" />
-<!------상단메뉴용---------------------------->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="styles.css">
-	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-	<script src="top_menu.js"></script>
-<!------이미지슬라이드---------------------------->
-	<link rel="stylesheet" href="sidebar.css">
-	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-	<script src="script.js"></script>
-    
-    <link rel="stylesheet" href="table.css">
-</head>
-
-<body>
+<body bgcolor="#FFFAF6">
 <header>
-	<img src="img/title.png" width="500" height="300" alt="shop mark">빈 이미지와, 회사 마크와 간략한 문>
-	<div id='cssmenu'>
-		<ul>
-			<li class='active'><a href='index.html'>Home</a></li>
-			<li><a href='#'>회사소개</a></li>
-			<li><a href='product.html'>한우</a></li>
-			<li><a href='notice.php'>공지사항/FAQ</a></li>
-			<li><a href='#'>장바구니</a></li>
-		</ul>
-	</div>
+    <div style="margin-left: 10%">
+         <table>
+             <tr> <td rowspan="3"> <img src="img/logo_top.png" width="500" height="300" alt="logo top"></td><td><td></td></td><td></td></tr>
+            <tr><td rowspan="3"><img src="img/pink.png" width="100" height="300" alt="pink"></td><td></td><td></td><td><img src="img/pink.png" width="100" height="150" alt="pink"></td></tr>
+            <tr><td></td><td></td><td><img src="img/call.png" width="400" height="100" alt="call"></td></td></td></tr>
+         </table>
+    </div>
+    <div id='cssmenu' style="">
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='intro.html'>회사소개</a></li>
+            <li><a href='product.html'>한우</a></li>
+            <li class='active'><a href='notice.php'>공지사항/FAQ</a></li>
+            <li><a href='#'>장바구니</a></li>
+        </ul>
+    </div>
 </header>
 <br>
 <br>
 <br>
 <br>
 	<div id='content'>
-		<br>
-		<br>
-		<br>
-		<h1><u>공지사항 & Questions</u></h1>
-		<br>
-        <hr>
-		<br>
-		<br>
         <form method="post" action="notice_content.php">
 		<table id="hor-minimalist-b" summary="Employee Pay Sheet">
             <?php
@@ -153,10 +166,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 $conn->close();
             ?>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="newtext.php"><img src="img\\writing.jpg" alt="글쓰기" style="width: 30px;height: 30px;"></a></td>
+            </tr>
             </tbody>
 		</table>
         </form>
-        <a href="newtext.php"><button>글작성</button></a>
 	</div>
 
 </body>

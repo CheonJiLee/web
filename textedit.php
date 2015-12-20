@@ -16,33 +16,31 @@
     <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
 	<script src="textedit.js"></script>
 </head>
-
-<body>
+    
+<body bgcolor="#FFFAF6">
 <header>
-	<img src="img/title.png" width="500" height="300" alt="shop mark">빈 이미지와, 회사 마크와 간략한 문>
-	<div id='cssmenu'>
-		<ul>
-			<li class='active'><a href='index.html'>Home</a></li>
-			<li><a href='#'>회사소개</a></li>
-			<li><a href='product.html'>한우</a></li>
-			<li><a href='notice.php'>공지사항/FAQ</a></li>
-			<li><a href='#'>장바구니</a></li>
-		</ul>
-	</div>
+    <div style="margin-left: 10%">
+         <table>
+             <tr> <td rowspan="3"> <img src="img/logo_top.png" width="500" height="300" alt="logo top"></td><td><td></td></td><td></td></tr>
+            <tr><td rowspan="3"><img src="img/pink.png" width="100" height="300" alt="pink"></td><td></td><td></td><td><img src="img/pink.png" width="100" height="150" alt="pink"></td></tr>
+            <tr><td></td><td></td><td><img src="img/call.png" width="400" height="100" alt="call"></td></td></td></tr>
+         </table>
+    </div>
+    <div id='cssmenu' style="">
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='intro.html'>회사소개</a></li>
+            <li><a href='product.html'>한우</a></li>
+            <li class='active'><a href='notice.php'>공지사항/FAQ</a></li>
+            <li><a href='#'>장바구니</a></li>
+        </ul>
+    </div>
 </header>
 <br>
 <br>
 <br>
 <br>
 	<div id='content'>
-		<br>
-		<br>
-		<br>
-		<h1><u>글 수정</u></h1>
-		<br>
-        <hr>
-		<br>
-		<br>
         <form id="form" action="notice.php" method="post">
 		<table>
             <?php
@@ -50,8 +48,7 @@
                 $username = "changoul";
                 $password = "changoul";
                 $dbname = "Changoul";
-                $where = "당일 주문 당일 발송 안내 ";
-                //$where = $_POST["title"];
+                $where = $_POST["title"];
 
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -69,25 +66,25 @@
             ?>
             <tr>
                 <td>
-                    id : <input id="id" name="id" type="text" value="<?php echo $row["id"];?>" disabled>
+                    id : <input id="id" name="id" type="text" value="<?php echo $row["id"];?>" disabled style="background-color: #FFFAF6">
                 </td>
             </tr>
 			<tr>
                 <td>
-                    제목 : <input id="title" name="title" type="text" value="<?php echo $row["title"];?>">
+                    제목 : <input id="title" name="title" type="text" value="<?php echo $row["title"];?>" style="background-color: #FFFAF6">
                 </td>
             </tr>
             <tr>
-                <td>작성자 : <input id="writer" name="writer" type="text" value="<?php echo $row["writer"];?>">
+                <td>작성자 : <input id="writer" name="writer" type="text" value="<?php echo $row["writer"];?>" style="background-color: #FFFAF6">
                 </td>
             </tr>
             <tr>
-                <td>비밀번호 : <input id="password" name="password" type="text" value="">
+                <td>비밀번호 : <input id="password" name="password" type="text" value="" style="background-color: #FFFAF6">
                 비밀글 <input id="private" type="checkbox">
                 </td>
             </tr>
 		</table>
-        <textarea id="content" name="content" rows="10" cols="45"><?php echo $row["content"];?></textarea>
+        <textarea id="content" name="content" rows="10" cols="45" style="background-color: #FFFAF6"><?php echo $row["content"];?></textarea>
         <?php
         }
         $conn->close();
