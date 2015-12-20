@@ -180,3 +180,12 @@
 .jeju{
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 }
+.search {
+  color: #666;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #c6c6c6;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
+  background: #fff;
+  background: linear-gradient(to bottom, #ffffff 40%, #f6f6f6 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0 );/*IE*/
+}

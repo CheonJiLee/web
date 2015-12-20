@@ -61,33 +61,46 @@
 			<h1><u>삼겹살</u></h1>
 			<br>
 			------------------------------------------------<br>
-			조건 검색<br>
-			가격:
+			<font size="5"><b>조건 검색</b></font><br>
+			------------------------------------------------
 			<form>
-
+				<table>
+					<tr><td>
+			가격:
 				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~10000
 				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~30000
 				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~50000
 				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~100000<br>
+					</td>
+						<td rowspan="3"><input type="submit" class="search" value="검색"style="height:80px; width:80px;"></td></tr>
+					<tr><td>
 			용도:
 				<input type="radio" name="chk_info2" value="국거리" ondblclick="this.checked=false">국거리
 				<input type="radio" name="chk_info2" value="구이" ondblclick="this.checked=false">구이
 				<input type="radio" name="chk_info2" value="조림" ondblclick="this.checked=false">조림
 				<input type="radio" name="chk_info2" value="샤브샤브" ondblclick="this.checked=false">샤브샤브<br>
+						</td></tr>
+					<tr><td>
 			등급:
 				<input type="radio" name="chk_info3" value="A++" ondblclick="this.checked=false">A++
 				<input type="radio" name="chk_info3" value="A+" ondblclick="this.checked=false">A+
-				<input type="radio" name="chk_info3" value="A" ondblclick="this.checked=false">A<br>
-			------------------------------------------------
+				<input type="radio" name="chk_info3" value="A" ondblclick="this.checked=false">A
+						</td></tr>
+				</table>
 			</form>
-			<p><p>SortBy<select name="sel_pro" >
-			<option value="낮은가격순">낮은가격순</option>
-			<option value="높은가격순">높은가격순</option>
-			<option value="등급">등급</option>
-				</select></p>
-		</select>
+
+			<div style="float: right;, margin-right:5%">
+			SortBy
+				<select name="sel_pro" >
+					<option value="낮은가격순">선택</option>
+					<option value="낮은가격순">낮은가격순</option>
+					<option value="높은가격순">높은가격순</option>
+					<option value="등급">등급</option>
+				</select>
+			</div>
 			<br>
 			<br>
+			<hr>
 			<table>
 				<tr>
 					<td>
