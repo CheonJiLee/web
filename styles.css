@@ -177,3 +177,6 @@
 #cssmenu.small-screen #menu-button.menu-opened:before {
   background: #dff2fa;
 }
+.jeju{
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+}
