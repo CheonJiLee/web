@@ -14,7 +14,7 @@
 	<script src="script.js"></script>
 <!--textedit control-->
     <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
-	<script src="textedit.js"></script>
+	<script src="newtext.js"></script>
 </head>
     
 <body bgcolor="#FFFAF6">
@@ -84,7 +84,13 @@
                 </td>
             </tr>
 		</table>
-        <textarea id="content" name="content" rows="10" cols="45" style="background-color: #FFFAF6"><?php echo $row["content"];?></textarea>
+        <textarea id="content" name="content" rows="10" cols="45" style="background-color: #FFFAF6">
+        <?php
+            $myfile = fopen($row["content"], "r") or die("Unable to open file!");
+            echo fread($myfile,filesize($row["content"]));
+            fclose($myfile);
+        ?>
+        </textarea>
         <?php
         }
         $conn->close();
