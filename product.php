@@ -151,7 +151,7 @@
                     ?>
                         <td>
                     
-                                <a href="bracket.php?name=<?php echo $row["name"];?>"><img src="<?php echo $row["picture"]?>" width="200" height="200" alt="gogi"></a><br>
+                                <a href="bracket.php?num=<?php echo $row["title_no"];?>"><img src="<?php echo $row["picture"]?>" width="200" height="200" alt="gogi"></a><br>
                     
                         <?php
                                 echo $row["name"]. "<br>" . $row["price"]. "원<br>" . $row["purpose"]. "</td>";

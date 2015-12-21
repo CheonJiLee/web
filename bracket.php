@@ -15,15 +15,17 @@
 
     <?php
     $cookie_name = "gogi_bracket";
-    if (isset($_GET["name"])) {
+    if (isset($_GET["num"])) {
         if(!isset($_COOKIE[$cookie_name])) {
-            $cookie_value = $_GET["name"];
+            $cookie_value = $_GET["num"];
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
         } else {
-            $cookie_value = $_COOKIE[$cookie_name]."//".$_GET["name"];
+            $cookie_value = $_COOKIE[$cookie_name]."//".$_GET["num"];
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
         }
-        echo "<meta http-equiv='refresh' content='0;product.php'>"; 
+    } elseif($_SERVER["REQUEST_METHOD"] == "POST") {
+        // set the expiration date to one hour ago
+        setcookie($cookie_name, "", time() - 3600);
     }
     ?>
 
@@ -76,12 +78,11 @@
                 }else {
                     $pieces = explode("//", $_COOKIE[$cookie_name]);
                     
-                    $where = " WHERE name='".$pieces[0]."'";
+                    $where = " WHERE title_no='".$pieces[0]."'";
 
                     for($i = 1; $i < count($pieces); $i++){
-                        $where = $where." OR name='".$pieces[$i]."'";
+                        $where = $where." OR title_no='".$pieces[$i]."'";
                     }
-
                     $sql = "SELECT title_no, name, price, picture, purpose FROM meat".$where;
                 }
                 $result = $conn->query($sql);
@@ -90,6 +91,7 @@
                     // output data of each row
                     
                     $row = $result->fetch_assoc();
+                    $sum = 0;
                     while($row) {
                     ?>
                     <tr>
@@ -98,10 +100,11 @@
                     ?>
                         <td>
                     
-                                <a href="bracket.php?name=<?php echo $row["name"];?>"><img src="<?php echo $row["picture"]?>" width="200" height="200" alt="gogi"></a><br>
+                                <img src="<?php echo $row["picture"]?>" width="200" height="200" alt="gogi"><br>
                     
                         <?php
                                 echo $row["name"]. "<br>" . $row["price"]. "원<br>" . $row["purpose"]. "</td>";
+                                $sum = $sum + $row["price"];
                                 ?>
                     
                     
@@ -118,10 +121,12 @@
 			</table>
             <hr>
             <div><font size="4">&ensp;&ensp;&ensp;장바구니 전체 삭제</font>
-                <input type="button" value="ok" style="width:50px;">
+                <form method="post" action="bracket.php">
+                <input type="submit" value="ok" style="width:50px;">
+                </form>
                 <font size="6">&ensp;
                     &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
-                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;총 금액 : </font><br>
+                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;총 금액 : <?php echo $sum?></font><br>
 
                 <form>
 
@@ -131,7 +136,7 @@
                         &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
                         &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
                         &ensp;&ensp;&ensp;&ensp;쇼핑을 계속 하시겠습니까? </font>
-                    <input type="button" value="ok" style="width:50px;">
+                    <a href="product.php"><button type="button" style="width:50px;">ok</button></a>
                     <br>
                     <br>
                     <br>
