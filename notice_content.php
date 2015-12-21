@@ -31,9 +31,9 @@
         <ul>
             <li><a href='index.html'>Home</a></li>
             <li><a href='intro.html'>회사소개</a></li>
-            <li><a href='product.html'>한우</a></li>
+            <li><a href='product.php'>한우</a></li>
             <li class='active'><a href='notice.php'>공지사항/FAQ</a></li>
-            <li><a href='#'>장바구니</a></li>
+            <li><a href='bracket.php'>장바구니</a></li>
         </ul>
     </div>
 </header>

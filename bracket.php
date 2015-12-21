@@ -20,9 +20,10 @@
             $cookie_value = $_GET["name"];
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
         } else {
-            $_COOKIE[$cookie_name] = $_COOKIE[$cookie_name]."//".$_GET["name"];
+            $cookie_value = $_COOKIE[$cookie_name]."//".$_GET["name"];
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
         }
-        echo "<meta http-equiv='refresh' content='0' url='product.php'>"; 
+        echo "<meta http-equiv='refresh' content='0;product.php'>"; 
     }
     ?>
 
@@ -41,7 +42,7 @@
 		<ul>
 			<li><a href='index.html'>Home</a></li>
 			<li><a href='intro.html'>회사소개</a></li>
-			<li><a href='product.html'>한우</a></li>
+			<li><a href='product.php'>한우</a></li>
 			<li><a href='notice.php'>공지사항/FAQ</a></li>
 			<li class='active'><a href='bracket.php'>장바구니</a></li>
 		</ul>
@@ -74,11 +75,15 @@
                 }
 
                 if (!isset($_COOKIE[$cookie_name])){
-                    $sql = "SELECT title_no, name, price, picture, purpose FROM meat";
+                    $sql = NULL;
                 }else {
-                    $where = " WHERE";
+                    $pieces = explode("//", $_COOKIE[$cookie_name]);
+                    
+                    $where = " WHERE name='".$pieces[0]."'";
 
-                    $pieces = explode("//", $_COOKIE[$cookie_name]))
+                    for($i = 1; $i < count($pieces); $i++){
+                        $where = $where." OR name='".$pieces[$i]."'";
+                    }
 
                     $sql = "SELECT title_no, name, price, picture, purpose FROM meat".$where;
                 }
