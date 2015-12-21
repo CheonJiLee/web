@@ -15,6 +15,7 @@
 <!--textedit control-->
     <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
 	<script src="textedit.js"></script>
+    <link rel="stylesheet" href="table.css">
 </head>
     
 <body bgcolor="#FFFAF6">
@@ -42,7 +43,8 @@
 <br>
 	<div id='content'>
         <form id="form" action="textedit.php" method="post">
-		<table>
+		<table id="hor-minimalist-b" summary="Employee Pay Sheet">
+            <thead>
             <?php
                 $servername = "localhost";
                 $username = "changoul";
@@ -63,18 +65,17 @@
                 if ($result->num_rows > 0) {
                     // output data of each row
             ?>
-			<tr>
-                <td>
                 <?php
                     $row = $result->fetch_assoc();
                     if($row["isnotice"] == '1')
                         echo "[공지] ";
                 ?>
                     <input id="title" name="title" type="text" value="<?php echo $row["title"];?>" style="border: none; color: black; background-color: transparent;" disabled>
-                </td><td></td>
-                <tr><td></td><td>작성자 : <?php echo $row["writer"];?></td></tr>
-                <tr><td></td><td>등록일 : <?php echo $row["date"];?></td></tr>
-		</table>
+                <tr><th scope="col">작성자 : <?php echo $row["writer"];?></th>
+                <th scope="col">등록일 : <?php echo $row["date"];?></th></tr>
+                </thead>
+            <tbody>             <tr><td></td><td></td></tr>
+            <tr>             <td colspan="2"><font size="4"><br>
         <?php
             $myfile = fopen($row["content"], "r") or die("Unable to open file!");
             echo fread($myfile,filesize($row["content"]));
@@ -84,8 +85,15 @@
         }
         $conn->close();
         ?>
+        <br></font>
+            </td>
+        </tr>  
+        </tbody>
+            </table>
         <br>
-        <input id="submit" type="submit" value="수정하기">
+        <div style="float:right; margin-right: 10%">
+            <input id="submit" type="submit" value="수정하기">
+        </div>
         </form>
 	</div>
 
