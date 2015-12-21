@@ -17,7 +17,7 @@
 </head>
 
 <?php
-$servername = "localhost";
+$servername = "203.253.146.133:3306";
 $username = "changoul";
 $password = "changoul";
 $dbname = "Changoul";

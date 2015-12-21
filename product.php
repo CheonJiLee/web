@@ -41,17 +41,17 @@
 	<div id='content'>
 		<div id='sidebar' style="display:inline">
 			<ul>
-				<li class='active'><a href='#'>한우</a></li>
-				<li><a href='#'>윗등심</a></li>
-				<li><a href='#'>아랫등심</a></li>
-				<li><a href='#'>업진살</a></li>
-				<li><a href='#'>차돌박이</a></li>
-				<li><a href='#'>목심</a></li>
-				<li><a href='#'>안심</a></li>
-				<li><a href='#'>양지</a></li>
-				<li><a href='#'>채끌</a></li>
-				<li><a href='#'>사골</a></li>
-				<li><a href='#'>부채살</a></li>
+				<li class='active'><a href='product.php'>한우</a></li>
+				<li><a href='product.php?name=윗등심'>윗등심</a></li>
+				<li><a href='product.php?name=아랫등심'>아랫등심</a></li>
+				<li><a href='product.php?name=업진살'>업진살</a></li>
+				<li><a href='product.php?name=차돌박이'>차돌박이</a></li>
+				<li><a href='product.php?name=목심'>목심</a></li>
+				<li><a href='product.php?name=안심'>안심</a></li>
+				<li><a href='product.php?name=양지'>양지</a></li>
+				<li><a href='product.php?name=채끝'>채끝</a></li>
+				<li><a href='product.php?name=사골'>사골</a></li>
+				<li><a href='product.php?name=부채살'>부채살</a></li>
 			</ul>
 		</div>
 		<div id='list_1' style="display:inline">
@@ -92,7 +92,7 @@
 			<table>
 
                 <?php
-                $servername = "localhost";
+                $servername = "203.253.146.133:3306";
                 $username = "changoul";
                 $password = "changoul";
                 $dbname = "Changoul";
@@ -130,7 +130,11 @@
                         $sql = "SELECT title_no, name, price, picture, purpose FROM meat".$where;
                     else
                         $sql = "SELECT title_no, name, price, picture, purpose FROM meat";
-                } else {
+                } elseif (isset($_GET["name"])) {
+                    $where = " WHERE name = '".$_GET["name"]."'";
+
+                    $sql = "SELECT title_no, name, price, picture, purpose FROM meat".$where;
+                }else {
                     $sql = "SELECT title_no, name, price, picture, purpose FROM meat";
                 }
                 $result = $conn->query($sql);
@@ -147,7 +151,7 @@
                     ?>
                         <td>
                     
-                                <img src="<?php echo $row["picture"]?>" width="200" height="200" alt="gogi"><br>
+                                <a href="bracket.php?name=<?php echo $row["name"];?>"><img src="<?php echo $row["picture"]?>" width="200" height="200" alt="gogi"></a><br>
                     
                         <?php
                                 echo $row["name"]. "<br>" . $row["price"]. "원<br>" . $row["purpose"]. "</td>";

@@ -44,7 +44,7 @@
         <form id="form" action="notice.php" method="post">
 		<table>
             <?php
-                $servername = "localhost";
+                $servername = "203.253.146.133:3306";
                 $username = "changoul";
                 $password = "changoul";
                 $dbname = "Changoul";
