@@ -77,7 +77,7 @@
                 }
 
                 if (!isset($_COOKIE[$cookie_name])){
-                    $sql = NULL;
+                    $sql = " ";
                 }else {
                     $pieces = explode("//", $_COOKIE[$cookie_name]);
                     
@@ -89,12 +89,12 @@
                     $sql = "SELECT title_no, name, price, picture, purpose FROM meat".$where;
                 }
                 $result = $conn->query($sql);
+                $sum = 0;
 
-                if ($result->num_rows > 0) {
+                if (isset($result->num_rows)) {
                     // output data of each row
                     
                     $row = $result->fetch_assoc();
-                    $sum = 0;
                     while($row) {
                     ?>
                     <tr>
