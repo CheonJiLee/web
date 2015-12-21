@@ -19,13 +19,16 @@
         if(!isset($_COOKIE[$cookie_name])) {
             $cookie_value = $_GET["num"];
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+            echo "<meta http-equiv='refresh' content='0;bracket.php'>"; 
         } else {
             $cookie_value = $_COOKIE[$cookie_name]."//".$_GET["num"];
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+            echo "<meta http-equiv='refresh' content='0;bracket.php'>"; 
         }
     } elseif($_SERVER["REQUEST_METHOD"] == "POST") {
         // set the expiration date to one hour ago
         setcookie($cookie_name, "", time() - 3600);
+        echo "<meta http-equiv='refresh' content='0;bracket.php'>"; 
     }
     ?>
 
