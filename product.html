@@ -61,14 +61,14 @@
 			<h1>한우</h1>
 			<hr>
 			<font size="5"><b>&ensp;&ensp;조건 검색</b></font><br>
-			<form>
+			<form method="post" action="product.php">
 				<table>
 					<tr><td>
 			가격:
-				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~10000
-				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~30000
-				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~50000
-				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~100000<br>
+				<input type="radio" name="chk_info1" value="10000" ondblclick="this.checked=false">~10000
+				<input type="radio" name="chk_info1" value="30000" ondblclick="this.checked=false">~30000
+				<input type="radio" name="chk_info1" value="50000" ondblclick="this.checked=false">~50000
+				<input type="radio" name="chk_info1" value="100000" ondblclick="this.checked=false">~100000<br>
 					</td>
 						<td rowspan="3"><input type="submit" class="search" value="검색"style="height:80px; width:80px;"></td></tr>
 					<tr><td>
@@ -86,123 +86,89 @@
 						</td></tr>
 				</table>
 			</form>
-
-			<div style="float: right;, margin-right:5%">
-			SortBy
-				<select name="sel_pro" >
-					<option value="낮은가격순">선택</option>
-					<option value="낮은가격순">낮은가격순</option>
-					<option value="높은가격순">높은가격순</option>
-					<option value="등급">등급</option>
-				</select>
-			</div>
 			<br>
 			<br>
 			<hr>
 			<table>
-				<tr>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<center>고기에 대한 설명<br>
-						<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-						<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-						<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-						<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-					<td>
-						<img src="img/a1.png" width="200" height="200">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-					<td>
-						<center>고기에 대한 설명<br>
-							<input type="button" value="장바구니 담기" onclick="location.href='#' "></center>
-					</td>
-				</tr>
-			</table>
 
-
+                                    <tr>
+                                            <td>
+                    
+                                <img src="img\등심.png" width="200" height="200" alt="gogi"><br>
+                    
+                        윗등심<br>50000원<br>구이</td>                    
+                    
+                        </td> 
+                                                <td>
+                    
+                                <img src="img\등심.png" width="200" height="200" alt="gogi"><br>
+                    
+                        아랫등심<br>50000원<br>구이</td>                    
+                    
+                        </td> 
+                                                <td>
+                    
+                                <img src="img\업진살.png" width="200" height="200" alt="gogi"><br>
+                    
+                        업진살<br>43000원<br>국거리</td>                    
+                    
+                        </td> 
+                                                <td>
+                    
+                                <img src="img\차돌박이.png" width="200" height="200" alt="gogi"><br>
+                    
+                        차돌박이<br>40000원<br>샤브샤브</td>                    
+                    
+                        </td> 
+                                            </tr>
+                                        <tr>
+                                            <td>
+                    
+                                <img src="img\목심.png" width="200" height="200" alt="gogi"><br>
+                    
+                        목심<br>27000원<br>국거리</td>                    
+                    
+                        </td> 
+                                                <td>
+                    
+                                <img src="img\안심.png" width="200" height="200" alt="gogi"><br>
+                    
+                        안심<br>57000원<br>구이</td>                    
+                    
+                        </td> 
+                                                <td>
+                    
+                                <img src="img\양지.png" width="200" height="200" alt="gogi"><br>
+                    
+                        양지<br>35000원<br>조림</td>                    
+                    
+                        </td> 
+                                                <td>
+                    
+                                <img src="img\채끝.png" width="200" height="200" alt="gogi"><br>
+                    
+                        채끝<br>48000원<br>구이</td>                    
+                    
+                        </td> 
+                                            </tr>
+                                        <tr>
+                                            <td>
+                    
+                                <img src="img\사골.png" width="200" height="200" alt="gogi"><br>
+                    
+                        사골<br>5000원<br>국거리</td>                    
+                    
+                        </td> 
+                                                <td>
+                    
+                                <img src="img\부채살.png" width="200" height="200" alt="gogi"><br>
+                    
+                        부채살<br>40000원<br>구이</td>                    
+                    
+                        </td> 
+                                            </tr>
+                       
+			</table>
 		</div>
 
 	</div>

@@ -61,14 +61,14 @@
 			<h1>한우</h1>
 			<hr>
 			<font size="5"><b>&ensp;&ensp;조건 검색</b></font><br>
-			<form>
+			<form method="post" action="product.php">
 				<table>
 					<tr><td>
 			가격:
-				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~10000
-				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~30000
-				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~50000
-				<input type="radio" name="chk_info1" value="가격" ondblclick="this.checked=false">~100000<br>
+				<input type="radio" name="chk_info1" value="10000" ondblclick="this.checked=false">~10000
+				<input type="radio" name="chk_info1" value="30000" ondblclick="this.checked=false">~30000
+				<input type="radio" name="chk_info1" value="50000" ondblclick="this.checked=false">~50000
+				<input type="radio" name="chk_info1" value="100000" ondblclick="this.checked=false">~100000<br>
 					</td>
 						<td rowspan="3"><input type="submit" class="search" value="검색"style="height:80px; width:80px;"></td></tr>
 					<tr><td>
@@ -86,16 +86,6 @@
 						</td></tr>
 				</table>
 			</form>
-
-			<div style="float: right;, margin-right:5%">
-			SortBy
-				<select name="sel_pro" >
-					<option value="낮은가격순">선택</option>
-					<option value="낮은가격순">낮은가격순</option>
-					<option value="높은가격순">높은가격순</option>
-					<option value="등급">등급</option>
-				</select>
-			</div>
 			<br>
 			<br>
 			<hr>
@@ -112,9 +102,37 @@
                 // Check connection
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
-                } 
-                
-                $sql = "SELECT title_no, name, price, picture, purpose FROM meat";
+                }
+
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if(isset($_POST["chk_info1"])){
+                        if(isset($where)){
+                            $where = $where." AND price < ".$_POST["chk_info1"];
+                        } else {
+                            $where = " WHERE price < ".$_POST["chk_info1"];
+                        }
+                    }
+                    if(isset($_POST["chk_info2"])){
+                        if(isset($where)){
+                            $where = $where." AND purpose = '".$_POST["chk_info2"]."'";
+                        } else {
+                            $where = " WHERE purpose = '".$_POST["chk_info2"]."'";
+                        }
+                    }
+                    if(isset($_POST["chk_info3"])){
+                        if(isset($where)){
+                            $where = $where." AND ranking = '".$_POST["chk_info3"]."'";
+                        } else {
+                            $where = " WHERE ranking = '".$_POST["chk_info3"]."'";
+                        }
+                    }
+                    if(isset($where))
+                        $sql = "SELECT title_no, name, price, picture, purpose FROM meat".$where;
+                    else
+                        $sql = "SELECT title_no, name, price, picture, purpose FROM meat";
+                } else {
+                    $sql = "SELECT title_no, name, price, picture, purpose FROM meat";
+                }
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
