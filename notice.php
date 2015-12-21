@@ -21,9 +21,8 @@ $servername = "203.253.146.133:3306";
 $username = "changoul";
 $password = "changoul";
 $dbname = "Changoul";
-$where = $_POST["title"];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+    $where = $_POST["title"];
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
