@@ -54,9 +54,6 @@
 <br>
 	<div id='content'>
 		<div id='list_1' style="display:inline">
-			<br>
-			<br>
-			<br>
 			<h1>장바구니</h1>
 			<hr>
 			<table>
@@ -119,6 +116,28 @@
                     }
                     ?>   
 			</table>
+            <hr>
+            <div>
+                <font size="6">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;총 금액 : </font><br>
+
+                <form>
+                    <font size="4">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                        &ensp;&ensp;&ensp;&ensp;쇼핑을 계속 하시겠습니까? </font>
+                    <input type="button" value="ok" style="width:50px;">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </form>
+            </div>
 		</div>
 
 	</div>
